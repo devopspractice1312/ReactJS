@@ -2,11 +2,15 @@ FROM node:current-alpine
 
 WORKDIR /app
 
-COPY package.json .
+COPY package.json /app
 
-RUN npm install -g npm@8.19.1
+COPY package-lock.json /app
 
-COPY . .
+RUN npm install -g npm
+
+COPY . /app
+
+EXPOSE 3000
 
 CMD ["npm", "start"]
 
